@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
+    public GameObject player;
     public Vector3 offset;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = target.position + offset;
+        // Locks main camera to player position with offset
+        transform.position = player.transform.position + offset;
     }
 }
