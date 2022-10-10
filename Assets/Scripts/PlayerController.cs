@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private Vector3 moveInput;
     private int score = 0;
+    public int health = 5;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -30,6 +31,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             score += 1;
             Debug.Log($"Score: {score}");
+        }
+
+        // If the object is a trap
+        if (other.tag == "Trap")
+        {
+            health -= 1;
+            Debug.Log($"Health: {health}");
         }
     }
 }
