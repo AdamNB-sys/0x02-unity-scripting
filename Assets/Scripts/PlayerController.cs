@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,7 +44,19 @@ public class PlayerController : MonoBehaviour
         // Win condition
         if (other.tag == "Goal" && score == 21)
         {
-            Debug.Log($"You win!");
+            Debug.Log("You win!");
+        }
+    }
+
+    // Update checks health and resets game
+    void Update()
+    {
+        if (health == 0)
+        {
+            Debug.Log("Game Over!");
+            health = 5;
+            score = 0;
+            SceneManager.LoadScene("maze");
         }
     }
 }
